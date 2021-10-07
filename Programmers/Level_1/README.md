@@ -1,2 +1,1 @@
-# DailySolve
-코딩 문제
+# Level_1
