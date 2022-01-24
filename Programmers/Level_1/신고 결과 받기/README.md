@@ -10,9 +10,6 @@
        
 ### 피드백
 
-항상 까먹는 split 함수는 그냥 외우도록 하자.
-unordered_map과 unordered_set에 좀 더 익숙해지는 것이 좋을 것 같다.
-시간에 쫒겨 풀어도 코드 가독성을 생각하며 작성하자.
-
-        
-#### set && unordered_set
+항상 까먹는 split 함수는 그냥 외우도록 하자.   
+unordered_map과 unordered_set에 좀 더 익숙해지는 것이 좋을 것 같다.   
+시간에 쫒겨 풀어도 코드 가독성을 생각하며 작성하자.   
