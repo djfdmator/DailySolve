@@ -1,40 +1,39 @@
-#include<unordered_set>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
-int solution(int N, int number) {
-    int answer = -1;
+vector<string> solution(vector<vector<string>> tickets) {
+    vector<string> answer;
     
-    unordered_set<int> data[8];
-    int num = 0;
-    for(int i = 0; i < 8; i++)
+    sort(tickets.begin(), tickets.end(), greater<vector<string>>());
+    unordered_map<string, vector<string>> m;
+    for(auto& i : tickets)
     {
-        num = num * 10 + 1;
-        data[i].insert(N * num);
+        m[i[0]].push_back(i[1]);
     }
     
-    for(int i = 0; i < 8; i++)
+    vector<string> stack;
+    stack.push_back("ICN");
+    while(stack.size() > 0)
     {
-        for(int j = 0; j < i; j++)
+        string from = stack.back();
+        if(m.find(from) != m.end() && m[from].size() > 0)
         {
-            for(auto& a : data[j])
-            {
-                for(auto& b : data[i - j - 1])
-                {
-                    data[i].insert(a * b);
-                    if(b != 0) data[i].insert(a / b);
-                    data[i].insert(a + b);
-                    data[i].insert(a - b);
-                }
-            }
+            string to = m[from].back();
+            m[from].pop_back();
+            stack.push_back(to);
         }
-        
-        if(data[i].find(number) != data[i].end())
+        else
         {
-            answer = i + 1;
-            break;
+            answer.push_back(stack.back());
+            stack.pop_back();
         }
     }
+    
+    reverse(answer.begin(), answer.end());
     
     return answer;
 }
