@@ -18,7 +18,7 @@ int judge(vector<vector<string>> &places, int i, int j, int k)
     }
     else if(places[i][j][k] == '1')
     {
-        places[i][j][k] = '2';
+        res = 0;
     }
     return res;
 }
@@ -55,22 +55,6 @@ vector<int> solution(vector<vector<string>> places) {
                 }
             }
             if(res == 0) break;
-        }
-
-        if(res == 1)
-        {
-            for(int j = 0; j < 5; j++)
-            {
-                for(int k = 0; k < 5; k++)
-                {
-                    if(places[i][j][k] == '2')
-                    {
-                        res = 0;
-                        break;
-                    }
-                }
-                if(res == 0) break;
-            }
         }
         
         answer.push_back(res);
